@@ -8,7 +8,7 @@ pre-commit==3.4.0
 flake8==6.1.0
 
 # Formatter. Apply codestyle:
-black==23.7.0
+black==23.9.1
 
 # A tool (and pre-commit hook) to automatically upgrade syntax for newer versions of the language:
 pyupgrade==3.10.1
@@ -20,7 +20,7 @@ autoflake==2.2.1
 # django==4.2.5
 
 # Generate Fake User-info:
-Faker==19.4.0
+Faker==19.6.1
 
 # Read web_json files:
 # requests==2.31.0
@@ -29,4 +29,4 @@ Faker==19.4.0
 # pandas==2.0.3
 
 # Create a Web-site:
-Flask==2.3.2
+Flask==2.3.3
