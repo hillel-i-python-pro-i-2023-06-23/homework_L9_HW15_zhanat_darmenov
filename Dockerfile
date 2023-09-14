@@ -18,10 +18,8 @@ COPY --chown=${USER} requirements.txt requirements.txt
 RUN pip install --upgrade pip && \
     pip install --requirement requirements.txt
 
-COPY --chown=${USER} ./manage.py manage.py
-COPY --chown=${USER} ./templates templates
-COPY --chown=${USER} ./first_app first_app
-COPY --chown=${USER} ./homework_10_2_zhanat_darmenov homework_10_2_zhanat_darmenov
+COPY --chown=${USER} app/ app
+# COPY --chown=${USER} ./homework_L9_HW15_zhanat_darmenov homework_L9_HW15_zhanat_darmenov
 
 USER ${USER}
 
