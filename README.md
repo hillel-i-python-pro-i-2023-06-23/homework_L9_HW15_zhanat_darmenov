@@ -72,7 +72,10 @@ make d-stop
 ---
 
 Base page:
-"" or "/"
+"/" or "hello"
 
-Return User info:
-"<str:username>/<int:age>/"
+Return User info via dynamic route:
+"/dynamic/<string:name>/<int:numb>/"
+
+Return User from DB. If it is not there - Add it to DB.
+"/query/<string:name>/<int:numb>/"
