@@ -32,16 +32,12 @@ def create_table():
             connection.close()
 
 
-# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 def check_user(contact_name, numeral_value):
     connection = None
     cursor = None
     try:
         conn = sqlite3.connect("db_hw15.db")
         cur = conn.cursor()
-
-        print(f"Name: {contact_name}")
-        print(f"Numb: {numeral_value}")
 
         sql_check = """
         SELECT contact_name, numeral_value FROM people;
@@ -51,12 +47,10 @@ def check_user(contact_name, numeral_value):
         res = cur.execute(sql_check)
         db_content = res.fetchall()
 
-        # usr = one Tuple at a Time
-        # usr[0] or "elm in usr" = first cell of every Tuple
+        # usr = e.g (Evan, 123)
+        # usr[0] or "elm in usr" = first cell of every Tuple. e.g (Evan)
 
         for usr in db_content:
-            print(f"Show next tuple: {usr}")
-            print(f"Show next tuple: {usr[0]}\n")
             if usr[0] == contact_name and usr[1] == numeral_value:
                 return True
         return False
@@ -106,14 +100,12 @@ def get_user_info(contact_name, numeral_value):
         cursor = connection.cursor()
 
         sql = """
-            SELECT phone_id, contact_name, numeral_value FROM people;
+            SELECT contact_name, numeral_value FROM people;
         """
         res = cursor.execute(sql)
         all_user_info = res.fetchall()
 
         for usr in all_user_info:
-            print(f"Show next tuple: {usr}")
-            print(f"Show next tuple: {usr[0]}\n")
             if usr[0] == contact_name and usr[1] == numeral_value:
                 return usr
 
