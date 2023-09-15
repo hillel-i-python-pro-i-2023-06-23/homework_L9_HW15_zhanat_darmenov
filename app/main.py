@@ -14,10 +14,13 @@ def hello():
     return "Hello World"
 
 
-@app.route("/dynamic/<str:name>/<int:numb>/", methods=["GET", "POST"])
+@app.route("/dynamic/<string:name>/<int:numb>/", methods=["GET", "POST"])
 def dynamic_greet(name: str = "John", numb: int = 0):
-    sqlite_manager.check_user_and_add(name, numb)
-    return "Hello {{ name }}! Your number is {{ number }}."
+    user_status = sqlite_manager.check_user_and_add(name, numb)
+    print(f"User present: {user_status}")
+    if not user_status:
+        sqlite_manager.put_user_info(name, numb)
+    return f"Hello { name }! Your number is { numb }."
 
 
 if __name__ == "__main__":
