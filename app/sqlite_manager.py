@@ -33,7 +33,7 @@ def create_table():
 
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-def check_user_and_add(contact_name, numeral_value):
+def check_user(contact_name, numeral_value):
     connection = None
     cursor = None
     try:
@@ -80,7 +80,7 @@ def put_user_info(contact_name, numeral_value):
         cursor = connection.cursor()
 
         sql_put = """
-        INSERT INTO phones (contact_name, numeral_value)
+        INSERT INTO people (contact_name, numeral_value)
         VALUES(?, ?)
         """
 
@@ -89,6 +89,39 @@ def put_user_info(contact_name, numeral_value):
 
     except sqlite3.Error as error:
         print(f"Error with DB connection: \n{error}\n")
+
+    finally:
+        if cursor:
+            cursor.close()
+
+        if connection:
+            connection.close()
+
+
+def get_user_info(contact_name, numeral_value):
+    connection = None
+    cursor = None
+    try:
+        connection = sqlite3.connect("db_hw15.db")
+        cursor = connection.cursor()
+
+        sql = """
+            SELECT phone_id, contact_name, numeral_value FROM people;
+        """
+        res = cursor.execute(sql)
+        all_user_info = res.fetchall()
+
+        for usr in all_user_info:
+            print(f"Show next tuple: {usr}")
+            print(f"Show next tuple: {usr[0]}\n")
+            if usr[0] == contact_name and usr[1] == numeral_value:
+                return usr
+
+        # return all_user_info  # Return the fetched data
+
+    except sqlite3.Error as error:
+        print(f"Error with getting User from DB: \n{error}\n")
+        return []
 
     finally:
         if cursor:
