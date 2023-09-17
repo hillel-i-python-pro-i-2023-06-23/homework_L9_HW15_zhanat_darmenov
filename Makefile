@@ -38,7 +38,7 @@ d-stop:
 		docker compose down
 
 .PHONY: d-homework-i-purge
-d-purge:
+d-homework-i-purge:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose down --volumes --remove-orphans --rmi local --timeout 0
 

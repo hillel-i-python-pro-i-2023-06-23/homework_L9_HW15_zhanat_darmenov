@@ -25,6 +25,6 @@ USER ${USER}
 
 VOLUME ${WORKDIR}/db
 
-EXPOSE 45000
+EXPOSE 45000/tcp
 
 ENTRYPOINT ["python", "main.py"]
