@@ -18,13 +18,13 @@ COPY --chown=${USER} requirements.txt requirements.txt
 RUN pip install --upgrade pip && \
     pip install --requirement requirements.txt
 
-COPY --chown=${USER} app/ app
-# COPY --chown=${USER} ./homework_L9_HW15_zhanat_darmenov homework_L9_HW15_zhanat_darmenov
+COPY --chown=${USER} app/main.py main.py
+COPY --chown=${USER} app/sqlite_manager.py sqlite_manager.py
 
 USER ${USER}
 
 VOLUME ${WORKDIR}/db
 
-EXPOSE 8000
+EXPOSE 45000
 
-ENTRYPOINT ["python", "manage.py", "runserver"]
+ENTRYPOINT ["python", "main.py"]

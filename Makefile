@@ -32,12 +32,12 @@ d-run:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose up --build
 
-.PHONY: d-homework-i-purge
+.PHONY: d-stop
 d-stop:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose down
 
-.PHONY: d-purge
+.PHONY: d-homework-i-purge
 d-purge:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose down --volumes --remove-orphans --rmi local --timeout 0
