@@ -82,7 +82,7 @@ def put_user_info(contact_name, numeral_value):
         connection.commit()
 
     except sqlite3.Error as error:
-        print(f"Error with DB connection: \n{error}\n")
+        print(f"Error with writing in  DB: \n{error}\n")
 
     finally:
         if cursor:
