@@ -1,0 +1,8 @@
+# Ignore all
+**
+
+# Exclude
+!homework_L9_HW15_zhanat_darmenov/
+!app/
+!main.py
+!requirements.txt
