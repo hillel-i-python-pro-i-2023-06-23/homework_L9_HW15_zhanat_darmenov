@@ -33,7 +33,6 @@ COPY --chown=${USER} app/sqlite_manager.py sqlite_manager.py
 # Set the user for running the application
 USER ${USER}
 
-# Set the Database Volume
 VOLUME ${WORKDIR}/db
 
 # Expose the port that your Flask app is running on
