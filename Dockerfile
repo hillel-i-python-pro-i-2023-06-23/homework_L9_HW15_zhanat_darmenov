@@ -1,3 +1,4 @@
+
 FROM python:3.11
 
 # Define environment variables
@@ -13,9 +14,9 @@ RUN useradd --system ${USER} && \
     chown --recursive ${USER} ${WORKDIR}
 
 # Add the following lines to set permissions for the /wd/db directory
-RUN mkdir -p ${WORKDIR}/db && \
-    chown -R ${USER} ${WORKDIR}/db && \
-    chmod -R 755 ${WORKDIR}/db
+# RUN mkdir -p ${WORKDIR}/db && \
+# RUN chown -R ${USER} ${WORKDIR} && \
+#    chmod -R 755 ${WORKDIR}
 
 # Install necessary system packages
 RUN apt update && apt upgrade -y
@@ -23,8 +24,9 @@ RUN apt install -y curl
 
 # Copy and install Python dependencies
 COPY --chown=${USER} requirements.txt requirements.txt
+
 RUN pip install --upgrade pip && \
-    pip install --requirement requirements.txt
+    pip install -r requirements.txt
 
 # Copy your application files
 COPY --chown=${USER} app/main.py main.py
@@ -33,7 +35,8 @@ COPY --chown=${USER} app/sqlite_manager.py sqlite_manager.py
 # Set the user for running the application
 USER ${USER}
 
-VOLUME ${WORKDIR}/db
+# Set the Database Volume
+VOLUME ${WORKDIR}
 
 # Expose the port that your Flask app is running on
 EXPOSE 48000

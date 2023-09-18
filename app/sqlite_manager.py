@@ -5,7 +5,7 @@ def create_table():
     connection = None
     cursor = None
     try:
-        connection = sqlite3.connect("../db/db_hw15.db")
+        connection = sqlite3.connect("hw15.db")
         cursor = connection.cursor()
 
         # Check if table exists
@@ -36,7 +36,7 @@ def check_user(contact_name, numeral_value):
     connection = None
     cursor = None
     try:
-        conn = sqlite3.connect("../db/db_hw15.db")
+        conn = sqlite3.connect("hw15.db")
         cur = conn.cursor()
 
         sql_check = """
@@ -70,7 +70,7 @@ def put_user_info(contact_name, numeral_value):
     connection = None
     cursor = None
     try:
-        connection = sqlite3.connect("../db/db_hw15.db")
+        connection = sqlite3.connect("hw15.db")
         cursor = connection.cursor()
 
         sql_put = """
@@ -96,7 +96,7 @@ def get_user_info(contact_name, numeral_value):
     connection = None
     cursor = None
     try:
-        connection = sqlite3.connect("../db/db_hw15.db")
+        connection = sqlite3.connect("hw15.db")
         cursor = connection.cursor()
 
         sql = """

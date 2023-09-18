@@ -161,5 +161,4 @@ cython_debug/
 
 docker-compose.override.yml
 
-app/db_hw15.db
-db/db_hw15.db
+/app/hw15.db
