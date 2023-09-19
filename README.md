@@ -78,7 +78,7 @@ or
 
 
 Return User info via query route:
-"http://127.0.0.1:48000/query/<string:name>/<int:numb>/"
+"http://127.0.0.1:48000/greet?name=Alice&number=42"
 
 
 Return User from DB. If it is not there - Add it to DB.
