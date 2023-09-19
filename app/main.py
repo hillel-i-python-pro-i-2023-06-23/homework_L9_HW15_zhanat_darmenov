@@ -1,7 +1,7 @@
 # app/main.py
 
-from flask import Flask
-import sqlite_manager
+from flask import Flask, request
+from app import sqlite_manager
 
 app = Flask(__name__)
 
@@ -10,15 +10,17 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/hello/", methods=["GET", "POST"])
 def hello():
-    print("Hello")
     sqlite_manager.create_table()
     return "Hello World"
 
 
-# Dynamic route that greets with provided info
-@app.route("/query/<string:name>/<int:number>/", methods=["GET", "POST"])
-def dynamic_greet(name: str = "John", number: int = 0):
-    return f"Hello { name }! Your number is { number }."
+# Query route:
+# http://127.0.0.1:48000/greet?name=Alice&number=42
+@app.route("/greet", methods=["GET"])
+def dynamic_greet():
+    name = request.args.get("name", "John")
+    number = int(request.args.get("number", 0))
+    return f"Hello {name}! Your number is {number}."
 
 
 @app.route("/database/<string:name>/<int:number>/", methods=["GET", "POST"])

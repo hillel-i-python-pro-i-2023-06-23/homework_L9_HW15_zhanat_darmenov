@@ -1,5 +1,5 @@
 
-FROM python:3.11
+FROM python:3.11-slim
 
 # Define environment variables
 ENV PYTHONUNBUFFERED=1
@@ -26,19 +26,17 @@ RUN apt install -y curl
 COPY --chown=${USER} requirements.txt requirements.txt
 
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install --requirement requirements.txt
 
 # Copy your application files
-COPY --chown=${USER} ./app .
+COPY --chown=${USER} . ./
 
 # Set the user for running the application
 USER ${USER}
 
 # Set the Database Volume
-VOLUME ${WORKDIR}
-
-# Expose the port that your Flask app is running on
-EXPOSE 48000
+# VOLUME ${WORKDIR}
 
 # Define the entry point for your application
-ENTRYPOINT ["python", "main.py"]
+# ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "--port=45000"]
