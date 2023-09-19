@@ -23,12 +23,6 @@ def dynamic_greet():
     return f"Hello {name}! Your number is {number}."
 
 
-# Dynamic route that greets with provided info
-# @app.route("/query/<string:name>/<int:number>/", methods=["GET", "POST"])
-# def dynamic_greet(name: str = "John", number: int = 0):
-#     return f"Hello { name }! Your number is { number }."
-
-
 @app.route("/database/<string:name>/<int:number>/", methods=["GET", "POST"])
 def query_greet(name: str = "Alice", number: int = 78):
     user_status = sqlite_manager.check_user(name, number)
