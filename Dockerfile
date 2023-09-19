@@ -29,8 +29,7 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy your application files
-COPY --chown=${USER} app/main.py main.py
-COPY --chown=${USER} app/sqlite_manager.py sqlite_manager.py
+COPY --chown=${USER} ./app .
 
 # Set the user for running the application
 USER ${USER}

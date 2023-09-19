@@ -76,8 +76,10 @@ Base page:
 or
 "http://127.0.0.1:48000/hello/"
 
+
 Return User info via query route:
 "http://127.0.0.1:48000/query/<string:name>/<int:numb>/"
+
 
 Return User from DB. If it is not there - Add it to DB.
 "http://127.0.0.1:48000/database/<string:name>/<int:numb>/"
