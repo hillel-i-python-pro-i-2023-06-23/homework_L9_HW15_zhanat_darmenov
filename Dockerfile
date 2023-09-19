@@ -35,10 +35,7 @@ COPY --chown=${USER} . ./
 USER ${USER}
 
 # Set the Database Volume
-VOLUME ${WORKDIR}
-
-# Expose the port that your Flask app is running on
-# EXPOSE 48000
+# VOLUME ${WORKDIR}
 
 # Define the entry point for your application
 # ENTRYPOINT ["python", "main.py"]

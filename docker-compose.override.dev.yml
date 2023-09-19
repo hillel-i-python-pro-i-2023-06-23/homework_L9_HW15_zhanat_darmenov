@@ -5,7 +5,11 @@ services:
     ports:
       - "48000:45000"
     volumes:
-      - ./app/hw15.db:/wd/app/hw15.db:rw
+      - hw15:/wd/app/hw15.db:rw
+#     - ./app/hw15.db:/wd/app/hw15.db:rw
     user: "${UID}"
     environment:
       - FLASK_APP=app/main.py
+volumes:
+  hw15:
+    driver: local
