@@ -26,7 +26,7 @@ RUN apt install -y curl
 COPY --chown=${USER} requirements.txt requirements.txt
 
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install --requirement requirements.txt
 
 # Copy your application files
 COPY --chown=${USER} . ./
